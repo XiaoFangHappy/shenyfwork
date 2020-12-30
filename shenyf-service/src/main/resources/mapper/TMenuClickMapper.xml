@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shenyf.shenyfwork.dao.TMenuClickMapper" >
+  <resultMap id="BaseResultMap" type="com.shenyf.shenyfwork.model.TMenuClick" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="menu_id" property="menuId" jdbcType="BIGINT" />
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+    <result column="click_count" property="clickCount" jdbcType="BIGINT" />
+    <result column="menu_type" property="menuType" jdbcType="INTEGER" />
+    <result column="value1" property="value1" jdbcType="VARCHAR" />
+    <result column="value2" property="value2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, menu_id, menu_name, click_count, menu_type, value1, value2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shenyf.shenyfwork.model.TMenuClickExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_menu_click
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_menu_click
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_menu_click
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.shenyf.shenyfwork.model.TMenuClickExample" >
+    delete from t_menu_click
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.shenyf.shenyfwork.model.TMenuClick" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_menu_click (menu_id, menu_name, click_count, 
+      menu_type, value1, value2
+      )
+    values (#{menuId,jdbcType=BIGINT}, #{menuName,jdbcType=VARCHAR}, #{clickCount,jdbcType=BIGINT}, 
+      #{menuType,jdbcType=INTEGER}, #{value1,jdbcType=VARCHAR}, #{value2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shenyf.shenyfwork.model.TMenuClick" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into t_menu_click
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
+      <if test="clickCount != null" >
+        click_count,
+      </if>
+      <if test="menuType != null" >
+        menu_type,
+      </if>
+      <if test="value1 != null" >
+        value1,
+      </if>
+      <if test="value2 != null" >
+        value2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="menuId != null" >
+        #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="clickCount != null" >
+        #{clickCount,jdbcType=BIGINT},
+      </if>
+      <if test="menuType != null" >
+        #{menuType,jdbcType=INTEGER},
+      </if>
+      <if test="value1 != null" >
+        #{value1,jdbcType=VARCHAR},
+      </if>
+      <if test="value2 != null" >
+        #{value2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.shenyf.shenyfwork.model.TMenuClickExample" resultType="java.lang.Integer" >
+    select count(*) from t_menu_click
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_menu_click
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.menuId != null" >
+        menu_id = #{record.menuId,jdbcType=BIGINT},
+      </if>
+      <if test="record.menuName != null" >
+        menu_name = #{record.menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clickCount != null" >
+        click_count = #{record.clickCount,jdbcType=BIGINT},
+      </if>
+      <if test="record.menuType != null" >
+        menu_type = #{record.menuType,jdbcType=INTEGER},
+      </if>
+      <if test="record.value1 != null" >
+        value1 = #{record.value1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.value2 != null" >
+        value2 = #{record.value2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_menu_click
+    set id = #{record.id,jdbcType=BIGINT},
+      menu_id = #{record.menuId,jdbcType=BIGINT},
+      menu_name = #{record.menuName,jdbcType=VARCHAR},
+      click_count = #{record.clickCount,jdbcType=BIGINT},
+      menu_type = #{record.menuType,jdbcType=INTEGER},
+      value1 = #{record.value1,jdbcType=VARCHAR},
+      value2 = #{record.value2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shenyf.shenyfwork.model.TMenuClick" >
+    update t_menu_click
+    <set >
+      <if test="menuId != null" >
+        menu_id = #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="menuName != null" >
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="clickCount != null" >
+        click_count = #{clickCount,jdbcType=BIGINT},
+      </if>
+      <if test="menuType != null" >
+        menu_type = #{menuType,jdbcType=INTEGER},
+      </if>
+      <if test="value1 != null" >
+        value1 = #{value1,jdbcType=VARCHAR},
+      </if>
+      <if test="value2 != null" >
+        value2 = #{value2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shenyf.shenyfwork.model.TMenuClick" >
+    update t_menu_click
+    set menu_id = #{menuId,jdbcType=BIGINT},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      click_count = #{clickCount,jdbcType=BIGINT},
+      menu_type = #{menuType,jdbcType=INTEGER},
+      value1 = #{value1,jdbcType=VARCHAR},
+      value2 = #{value2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
