@@ -1,8 +1,14 @@
 server:
   port: 8812 #端口号
-
-
 spring:
+  redis:
+    host: localhost # redis服务器地址
+    port: 6379 # 默认端口就是6379 可不配置
+    #password: root # redis服务器连接密码（默认为空）
+    database: 0 #使用Redis0号库
+    jedis:
+      pool:
+        max-active: 8 # 连接池最大连接数（如果配置为<=0，则没有限制）
   datasource:
     name: shenyfwork #数据库名称
     type: com.alibaba.druid.pool.DruidDataSource
@@ -10,9 +16,9 @@ spring:
     druid:
       #监控统计拦截的filters
       filters: stat
-      driver-class-name: com.mysql.jdbc.Driver
-      #基本属性
-      url: jdbc:mysql://127.0.0.1:3306/shenyfwork?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      #基本属性?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      url: jdbc:mysql://127.0.0.1:3306/shenyfwork
       username: root
       password: 123456
       #配置初始化大小/最小/最大

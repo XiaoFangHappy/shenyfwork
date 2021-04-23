@@ -19,61 +19,64 @@
 
 
 <script>
-    export default {
-        name: "Login",
-        data() {
-            return {
-                loginForm: {
-                    username: '',
-                    password: ''
-                },
-                responseResult: []
-            }
+  export default {
+    name: "Login",
+    data() {
+      return {
+        loginForm: {
+          username: '',
+          password: ''
         },
-        methods: {
-            login() {
-                this.$axios
-                    .post('/api/user/login/', {
-                        userLoginName: this.loginForm.username,
-                        loginPwd: this.loginForm.password
-                    })
-                    .then(successResponse => {
-                        if (successResponse.data.code === '0000') {
-                           /* this.$message({
-                                type: 'success',
-                                message: '登录成功!'
-                            });*/
-                           let user = successResponse.data.data;
-                           user = JSON.stringify(user);
-                           this.$router.push({path:'index',query:{user:user}});
-                        }else {
-                            this.$message({
-                                type: 'error',
-                                message: '登录失败!'
-                            });
-                        }
-                    })
-                    .catch(failResponse => {
-                        this.$message({
-                            type: 'error',
-                            message: '系统异常!'
-                        });
-                    })
+        responseResult: []
+      }
+    },
+    methods: {
+      login() {
+        this.$http.post('/api/user/login/', {
+          userLoginName: this.loginForm.username,
+          loginPwd: this.loginForm.password
+        })
+          .then(successResponse => {
+            if (successResponse.data.code === '0000') {
+              /* this.$message({
+                   type: 'success',
+                   message: '登录成功!'
+               });*/
+              let user = successResponse.data.data;
+              user = JSON.stringify(user);
+              /*
+                                         this.$router.push({path:'index',query:{user:user}});
+              */
+              this.$router.push({name: 'index', params: {user: user}});
+            } else {
+              this.$message({
+                type: 'error',
+                message: '登录失败!'
+              });
             }
-        }
+          })
+          .catch(failResponse => {
+            this.$message({
+              type: 'error',
+              message: '系统异常!'
+            });
+          })
+      }
     }
+  }
 </script>
 
 <style>
   #poster {
-    background:url("../../../assets/login/loginBg.jpg") no-repeat;
+    background: url("../../../assets/login/loginBg.jpg") no-repeat;
     background-position: center;
     height: 100%;
     width: 100%;
     background-size: cover;
     position: fixed;
   }
-  body{
+
+  body {
     margin: 0px;
     padding: 0;
   }

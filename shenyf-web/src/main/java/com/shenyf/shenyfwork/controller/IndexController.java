@@ -6,15 +6,13 @@ import com.shenyf.shenyfwork.entity.vo.TsysUserVO;
 import com.shenyf.shenyfwork.service.ITMenuService;
 import com.shenyf.shenyfwork.service.ITSysUserService;
 import lombok.extern.slf4j.Slf4j;
-import net.sf.json.JSONObject;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -32,18 +30,17 @@ public class IndexController {
     @Autowired
     private ITSysUserService sysUserService;
 
+
     @ResponseBody
     @PostMapping("/init")
-    public AjaxResultVO init(@RequestBody String userId) {
-        if(StringUtils.isNotBlank(userId)){
-            JSONObject json_user = JSONObject.fromObject(userId);
-            if(json_user != null && json_user.get("userId") != null){
-                TsysUserVO user = sysUserService.getUserById(json_user.get("userId").toString());
-                if(user != null){
-                    //获取菜单
-                    List<TMenuVO> menuList = menuService.getMenuByUser(json_user.get("userId").toString());
-                    return AjaxResultVO.markSuccess("查询成功",menuList);
-                }
+    public AjaxResultVO init(HttpServletRequest request) {
+        TsysUserVO sysUser = sysUserService.getLoginUser(request);
+        if (sysUser != null) {
+            TsysUserVO user = sysUserService.getUserById(sysUser.getUserId() + "");
+            if (user != null) {
+                //获取菜单
+                List<TMenuVO> menuList = menuService.getMenuByUser(sysUser.getUserId() + "");
+                return AjaxResultVO.markSuccess("查询成功", menuList);
             }
         }
         return AjaxResultVO.markError("请重新登录");

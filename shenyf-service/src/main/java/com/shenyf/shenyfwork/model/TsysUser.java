@@ -1,10 +1,12 @@
 package com.shenyf.shenyfwork.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.Date;
 
 @Data
+@ToString
 public class TsysUser {
     private Long userId;
 

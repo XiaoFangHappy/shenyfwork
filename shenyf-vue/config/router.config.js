@@ -28,11 +28,18 @@ export const constantRouterMap = [
 
   {
     path: '/idiomDetail',
+    name: 'idiomDetail',
     component: () => import('../src/components/views/idiom/idiomDetail')
+  },
+  {
+    path: '/idiomSearch',
+    name: 'idiomSearch',
+    component: () => import('../src/components/views/idiom/idiomSearch')
   },
 
   {
     path: '/index',
+    name: 'index',
     component: () => import('../src/components/views/index/index')
   }
 

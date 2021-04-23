@@ -50,4 +50,14 @@ public class TIdiomServiceImpl implements ITIdiomService {
         }
         return null;
     }
+
+    @Override
+    public String getIdiomRound() {
+        List<IdiomRecord> idiomRecords = idiomRecordMapper.selectByRound();
+        if(idiomRecords != null && !idiomRecords.isEmpty()){
+            return idiomRecords.get(0).getIdiomName();
+        }
+        return null;
+    }
+
 }

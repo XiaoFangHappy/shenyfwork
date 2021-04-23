@@ -1,325 +1,329 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.shenyf.shenyfwork.dao.IdiomRecordMapper" >
-  <resultMap id="BaseResultMap" type="com.shenyf.shenyfwork.model.IdiomRecord" >
-    <id column="idiom_id" property="idiomId" jdbcType="BIGINT" />
-    <result column="idiom_name" property="idiomName" jdbcType="VARCHAR" />
-    <result column="idiom_pronounce" property="idiomPronounce" jdbcType="VARCHAR" />
-    <result column="idiom_content" property="idiomContent" jdbcType="VARCHAR" />
-    <result column="idiom_comefrom" property="idiomComefrom" jdbcType="VARCHAR" />
-    <result column="idiom_antonym" property="idiomAntonym" jdbcType="VARCHAR" />
-    <result column="idiom_thesaurus" property="idiomThesaurus" jdbcType="VARCHAR" />
-    <result column="idiom_example" property="idiomExample" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="status" property="status" jdbcType="VARCHAR" />
-    <result column="value1" property="value1" jdbcType="VARCHAR" />
-    <result column="value2" property="value2" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+<mapper namespace="com.shenyf.shenyfwork.dao.IdiomRecordMapper">
+    <resultMap id="BaseResultMap" type="com.shenyf.shenyfwork.model.IdiomRecord">
+        <id column="idiom_id" property="idiomId" jdbcType="BIGINT"/>
+        <result column="idiom_name" property="idiomName" jdbcType="VARCHAR"/>
+        <result column="idiom_pronounce" property="idiomPronounce" jdbcType="VARCHAR"/>
+        <result column="idiom_content" property="idiomContent" jdbcType="VARCHAR"/>
+        <result column="idiom_comefrom" property="idiomComefrom" jdbcType="VARCHAR"/>
+        <result column="idiom_antonym" property="idiomAntonym" jdbcType="VARCHAR"/>
+        <result column="idiom_thesaurus" property="idiomThesaurus" jdbcType="VARCHAR"/>
+        <result column="idiom_example" property="idiomExample" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="value1" property="value1" jdbcType="VARCHAR"/>
+        <result column="value2" property="value2" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    idiom_id, idiom_name, idiom_pronounce, idiom_content, idiom_comefrom, idiom_antonym, 
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    idiom_id, idiom_name, idiom_pronounce, idiom_content, idiom_comefrom, idiom_antonym,
     idiom_thesaurus, idiom_example, create_time, update_time, status, value1, value2
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.shenyf.shenyfwork.model.IdiomRecordExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from t_idiom_record
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_idiom_record
-    where idiom_id = #{idiomId,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <select id="selectByExample" resultMap="BaseResultMap"
+            parameterType="com.shenyf.shenyfwork.model.IdiomRecordExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from t_idiom_record
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from t_idiom_record
+        where idiom_id = #{idiomId,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_idiom_record
     where idiom_id = #{idiomId,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.shenyf.shenyfwork.model.IdiomRecordExample" >
-    delete from t_idiom_record
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.shenyf.shenyfwork.model.IdiomRecord" >
-    <selectKey resultType="java.lang.Long" keyProperty="idiomId" order="AFTER" >
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into t_idiom_record (idiom_name, idiom_pronounce, idiom_content, 
-      idiom_comefrom, idiom_antonym, idiom_thesaurus, 
-      idiom_example, create_time, update_time, 
-      status, value1, value2
-      )
-    values (#{idiomName,jdbcType=VARCHAR}, #{idiomPronounce,jdbcType=VARCHAR}, #{idiomContent,jdbcType=VARCHAR}, 
-      #{idiomComefrom,jdbcType=VARCHAR}, #{idiomAntonym,jdbcType=VARCHAR}, #{idiomThesaurus,jdbcType=VARCHAR}, 
-      #{idiomExample,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=VARCHAR}, #{value1,jdbcType=VARCHAR}, #{value2,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.shenyf.shenyfwork.model.IdiomRecord" >
-    <selectKey resultType="java.lang.Long" keyProperty="idiomId" order="AFTER" >
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into t_idiom_record
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="idiomName != null" >
-        idiom_name,
-      </if>
-      <if test="idiomPronounce != null" >
-        idiom_pronounce,
-      </if>
-      <if test="idiomContent != null" >
-        idiom_content,
-      </if>
-      <if test="idiomComefrom != null" >
-        idiom_comefrom,
-      </if>
-      <if test="idiomAntonym != null" >
-        idiom_antonym,
-      </if>
-      <if test="idiomThesaurus != null" >
-        idiom_thesaurus,
-      </if>
-      <if test="idiomExample != null" >
-        idiom_example,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="value1 != null" >
-        value1,
-      </if>
-      <if test="value2 != null" >
-        value2,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="idiomName != null" >
-        #{idiomName,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomPronounce != null" >
-        #{idiomPronounce,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomContent != null" >
-        #{idiomContent,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomComefrom != null" >
-        #{idiomComefrom,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomAntonym != null" >
-        #{idiomAntonym,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomThesaurus != null" >
-        #{idiomThesaurus,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomExample != null" >
-        #{idiomExample,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="value1 != null" >
-        #{value1,jdbcType=VARCHAR},
-      </if>
-      <if test="value2 != null" >
-        #{value2,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.shenyf.shenyfwork.model.IdiomRecordExample" resultType="java.lang.Integer" >
-    select count(*) from t_idiom_record
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update t_idiom_record
-    <set >
-      <if test="record.idiomId != null" >
-        idiom_id = #{record.idiomId,jdbcType=BIGINT},
-      </if>
-      <if test="record.idiomName != null" >
+    <delete id="deleteByExample" parameterType="com.shenyf.shenyfwork.model.IdiomRecordExample">
+        delete from t_idiom_record
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.shenyf.shenyfwork.model.IdiomRecord">
+        <selectKey resultType="java.lang.Long" keyProperty="idiomId" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into t_idiom_record (idiom_name, idiom_pronounce, idiom_content,
+        idiom_comefrom, idiom_antonym, idiom_thesaurus,
+        idiom_example, create_time, update_time,
+        status, value1, value2
+        )
+        values (#{idiomName,jdbcType=VARCHAR}, #{idiomPronounce,jdbcType=VARCHAR}, #{idiomContent,jdbcType=VARCHAR},
+        #{idiomComefrom,jdbcType=VARCHAR}, #{idiomAntonym,jdbcType=VARCHAR}, #{idiomThesaurus,jdbcType=VARCHAR},
+        #{idiomExample,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+        #{status,jdbcType=VARCHAR}, #{value1,jdbcType=VARCHAR}, #{value2,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.shenyf.shenyfwork.model.IdiomRecord">
+        <selectKey resultType="java.lang.Long" keyProperty="idiomId" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into t_idiom_record
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="idiomName != null">
+                idiom_name,
+            </if>
+            <if test="idiomPronounce != null">
+                idiom_pronounce,
+            </if>
+            <if test="idiomContent != null">
+                idiom_content,
+            </if>
+            <if test="idiomComefrom != null">
+                idiom_comefrom,
+            </if>
+            <if test="idiomAntonym != null">
+                idiom_antonym,
+            </if>
+            <if test="idiomThesaurus != null">
+                idiom_thesaurus,
+            </if>
+            <if test="idiomExample != null">
+                idiom_example,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="value1 != null">
+                value1,
+            </if>
+            <if test="value2 != null">
+                value2,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="idiomName != null">
+                #{idiomName,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomPronounce != null">
+                #{idiomPronounce,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomContent != null">
+                #{idiomContent,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomComefrom != null">
+                #{idiomComefrom,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomAntonym != null">
+                #{idiomAntonym,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomThesaurus != null">
+                #{idiomThesaurus,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomExample != null">
+                #{idiomExample,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="value1 != null">
+                #{value1,jdbcType=VARCHAR},
+            </if>
+            <if test="value2 != null">
+                #{value2,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.shenyf.shenyfwork.model.IdiomRecordExample"
+            resultType="java.lang.Integer">
+        select count(*) from t_idiom_record
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update t_idiom_record
+        <set>
+            <if test="record.idiomId != null">
+                idiom_id = #{record.idiomId,jdbcType=BIGINT},
+            </if>
+            <if test="record.idiomName != null">
+                idiom_name = #{record.idiomName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.idiomPronounce != null">
+                idiom_pronounce = #{record.idiomPronounce,jdbcType=VARCHAR},
+            </if>
+            <if test="record.idiomContent != null">
+                idiom_content = #{record.idiomContent,jdbcType=VARCHAR},
+            </if>
+            <if test="record.idiomComefrom != null">
+                idiom_comefrom = #{record.idiomComefrom,jdbcType=VARCHAR},
+            </if>
+            <if test="record.idiomAntonym != null">
+                idiom_antonym = #{record.idiomAntonym,jdbcType=VARCHAR},
+            </if>
+            <if test="record.idiomThesaurus != null">
+                idiom_thesaurus = #{record.idiomThesaurus,jdbcType=VARCHAR},
+            </if>
+            <if test="record.idiomExample != null">
+                idiom_example = #{record.idiomExample,jdbcType=VARCHAR},
+            </if>
+            <if test="record.createTime != null">
+                create_time = #{record.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.updateTime != null">
+                update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.status != null">
+                status = #{record.status,jdbcType=VARCHAR},
+            </if>
+            <if test="record.value1 != null">
+                value1 = #{record.value1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.value2 != null">
+                value2 = #{record.value2,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update t_idiom_record
+        set idiom_id = #{record.idiomId,jdbcType=BIGINT},
         idiom_name = #{record.idiomName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.idiomPronounce != null" >
         idiom_pronounce = #{record.idiomPronounce,jdbcType=VARCHAR},
-      </if>
-      <if test="record.idiomContent != null" >
         idiom_content = #{record.idiomContent,jdbcType=VARCHAR},
-      </if>
-      <if test="record.idiomComefrom != null" >
         idiom_comefrom = #{record.idiomComefrom,jdbcType=VARCHAR},
-      </if>
-      <if test="record.idiomAntonym != null" >
         idiom_antonym = #{record.idiomAntonym,jdbcType=VARCHAR},
-      </if>
-      <if test="record.idiomThesaurus != null" >
         idiom_thesaurus = #{record.idiomThesaurus,jdbcType=VARCHAR},
-      </if>
-      <if test="record.idiomExample != null" >
         idiom_example = #{record.idiomExample,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.updateTime != null" >
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.status != null" >
         status = #{record.status,jdbcType=VARCHAR},
-      </if>
-      <if test="record.value1 != null" >
         value1 = #{record.value1,jdbcType=VARCHAR},
-      </if>
-      <if test="record.value2 != null" >
-        value2 = #{record.value2,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update t_idiom_record
-    set idiom_id = #{record.idiomId,jdbcType=BIGINT},
-      idiom_name = #{record.idiomName,jdbcType=VARCHAR},
-      idiom_pronounce = #{record.idiomPronounce,jdbcType=VARCHAR},
-      idiom_content = #{record.idiomContent,jdbcType=VARCHAR},
-      idiom_comefrom = #{record.idiomComefrom,jdbcType=VARCHAR},
-      idiom_antonym = #{record.idiomAntonym,jdbcType=VARCHAR},
-      idiom_thesaurus = #{record.idiomThesaurus,jdbcType=VARCHAR},
-      idiom_example = #{record.idiomExample,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      status = #{record.status,jdbcType=VARCHAR},
-      value1 = #{record.value1,jdbcType=VARCHAR},
-      value2 = #{record.value2,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.shenyf.shenyfwork.model.IdiomRecord" >
-    update t_idiom_record
-    <set >
-      <if test="idiomName != null" >
-        idiom_name = #{idiomName,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomPronounce != null" >
-        idiom_pronounce = #{idiomPronounce,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomContent != null" >
-        idiom_content = #{idiomContent,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomComefrom != null" >
-        idiom_comefrom = #{idiomComefrom,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomAntonym != null" >
-        idiom_antonym = #{idiomAntonym,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomThesaurus != null" >
-        idiom_thesaurus = #{idiomThesaurus,jdbcType=VARCHAR},
-      </if>
-      <if test="idiomExample != null" >
-        idiom_example = #{idiomExample,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="value1 != null" >
-        value1 = #{value1,jdbcType=VARCHAR},
-      </if>
-      <if test="value2 != null" >
-        value2 = #{value2,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where idiom_id = #{idiomId,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.shenyf.shenyfwork.model.IdiomRecord" >
+        value2 = #{record.value2,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.shenyf.shenyfwork.model.IdiomRecord">
+        update t_idiom_record
+        <set>
+            <if test="idiomName != null">
+                idiom_name = #{idiomName,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomPronounce != null">
+                idiom_pronounce = #{idiomPronounce,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomContent != null">
+                idiom_content = #{idiomContent,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomComefrom != null">
+                idiom_comefrom = #{idiomComefrom,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomAntonym != null">
+                idiom_antonym = #{idiomAntonym,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomThesaurus != null">
+                idiom_thesaurus = #{idiomThesaurus,jdbcType=VARCHAR},
+            </if>
+            <if test="idiomExample != null">
+                idiom_example = #{idiomExample,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="value1 != null">
+                value1 = #{value1,jdbcType=VARCHAR},
+            </if>
+            <if test="value2 != null">
+                value2 = #{value2,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where idiom_id = #{idiomId,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.shenyf.shenyfwork.model.IdiomRecord">
     update t_idiom_record
     set idiom_name = #{idiomName,jdbcType=VARCHAR},
       idiom_pronounce = #{idiomPronounce,jdbcType=VARCHAR},
@@ -335,4 +339,10 @@
       value2 = #{value2,jdbcType=VARCHAR}
     where idiom_id = #{idiomId,jdbcType=BIGINT}
   </update>
+
+    <select id="selectByRound" resultMap="BaseResultMap" parameterType="com.shenyf.shenyfwork.model.IdiomRecordExample">
+        select
+        <include refid="Base_Column_List"/>
+        from t_idiom_record order by rand() limit 1
+    </select>
 </mapper>

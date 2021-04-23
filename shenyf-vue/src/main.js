@@ -5,11 +5,23 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
-
-var axios=require('axios')
+import Qs from 'qs'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+/*var axios=require('axios')
 axios.defaults.baseURL='http://localhost:8814'
-Vue.prototype.$axios = axios
+Vue.prototype.$axios = axios*/
+
+
+var axios_instance = axios.create({
+  baseURL:'http://localhost:8814',
+  transformRequest: [function (data) {
+    data = Qs.stringify(data);
+    return data;
+  }],
+  headers:{'Content-Type':'application/x-www-form-urlencoded'}
+})
+Vue.use(VueAxios, axios_instance)
 
 Vue.config.productionTip = false
 /*作用是阻止vue 在启动时生成生产提示。*/

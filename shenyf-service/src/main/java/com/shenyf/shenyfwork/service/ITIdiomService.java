@@ -12,4 +12,5 @@ public interface ITIdiomService {
     int saveIdiom(IdiomRecord idiomRecord);
     IdiomRecordVO getIdiomByName(String idiomName);
     IdiomRecordVO getIdiomBykeyword(String keyword);
+    String getIdiomRound();
 }
